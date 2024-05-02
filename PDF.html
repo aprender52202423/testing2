@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprender - PDF</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            padding: 13px 0;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            bottom: 0;
+            position: unfixed;
+            width: 100%;
+        }
+        .collapsible {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .collapsible li {
+            background-color: #f0f0f0;
+            margin-bottom: 5px;
+        }
+
+        .collapsible li button {
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .collapsible-content {
+            display: none;
+            padding-left: 20px;
+        }
+
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="images\2024_05_01_0ym_Kleki.png" alt="Description of Image" style="margin-bottom: -20px;"> <h2 style="font-size: 24px; display: bottom;">Learn Spanish Online!</h2>
+    </header>
+    <nav>
+        <a href="Home.html">Home</a> <!-- Adjust the file paths accordingly -->
+        <a href="About.html">About</a>
+        <a href="Contact.html">Contact</a>
+        <a href="https://www.spanishconjugation.net/" target="_blank">Conjugate</a> <!-- Updated Google URL -->
+		
+        <h2>Select a Destination:</h2>
+        <select onchange="location = this.value;">
+            <option value="">Choose...</option>
+            <option value="">Choose...</option>
+            <option value="Quizzes.html">Quizzes</option>
+            <option value="Alternatives.html">Alternatives</option>
+        </select>
+        <br>
+    </nav>
+    <main>
+        <h2>Select a Unit:</h2>
+        <ul class="collapsible">
+            <li>
+                <button onclick="toggleContent('content1')">UNIT 1</button>
+                <div id="content1" class="collapsible-content">
+                    <p><a href="PDF Files\Unit 1\Gender of Nouns - StudySpanish.com.pdf" target="_blank">Gender of Nouns</a></p>
+                    <p><a href="PDF Files\Unit 1\Gender of Nouns_ Part II - StudySpanish.com.pdf" target="_blank">Gender of Nouns Part II</a></p>
+                    <p><a href="PDF Files\Unit 1\Cardinal Numbers_ 1-10 - StudySpanish.com.pdf" target="_blank">Cardinal Numbers_ 1-10</a></p>
+					<p><a href="PDF Files\Unit 1\Plural Forms of Nouns - StudySpanish.com.pdf" target="_blank">Plural Forms of Nouns</a></p>
+                    <p><a href="PDF Files\Unit 1\Definite and Indefinite Articles_ Part I - StudySpanish.com.pdf" target="_blank">Definite and Indefinite Articles Part I</a></p>
+                    <p><a href="PDF Files\Unit 1\The Verb Form _Hay_ - StudySpanish.com.pdf" target="_blank">The Verb Form  (Hay)</a></p>
+					<p><a href="PDF Files\Unit 1\Subject Pronouns - StudySpanish.com.pdf" target="_blank">Subject Pronouns</a></p>
+                    <p><a href="PDF Files\Unit 1\Regular Spanish Verbs - StudySpanish.com.pdf" target="_blank">Regular Spanish Verbs</a></p>
+                    <p><a href="PDF Files\Unit 1\Regular Verbs_ Part II - StudySpanish.com.pdf" target="_blank">Regular Verbs Part II</a></p>
+					<p><a href="PDF Files\Unit 1\Regular Verbs_ Part III - StudySpanish.com.pdf" target="_blank">Regular Verbs Part III</a></p>
+                    <p><a href="PDF Files\Unit 1\Spanish Adjectives - StudySpanish.com.pdf" target="_blank">Spanish Adjectives</a></p>
+                    <p><a href="PDF Files\Unit 1\Adjectives_ Part II - StudySpanish.com.pdf" target="_blank">Adjectives Part II</a></p>
+					<p><a href="PDF Files\Unit 1\Days of the Week - StudySpanish.com.pdf" target="_blank">Days of the Week</a></p>
+                    <p><a href="PDF Files\Unit 1\Cardinal Numbers 11-30 - StudySpanish.com.pdf" target="_blank">Cardinal Numbers 11-30</a></p>
+                </div>
+            </li>
+            <li>
+                <button onclick="toggleContent('content2')">UNIT 2</button>
+                <div id="content2" class="collapsible-content">
+                    <a href="images\COMING SOON!.png">COMING SOON!</a>
+           
+                </div>
+            </li>
+        </ul>
+    </main>
+    <footer>
+        <p>&copy; 2024 Aprender. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleContent(contentId) {
+            var content = document.getElementById(contentId);
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>

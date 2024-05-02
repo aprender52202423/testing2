@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprender - Alternatives</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 5px 0;
+            text-align: center;
+			bottom: 0;
+			position: fixed;
+			width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+       <img src="images\2024_05_01_0ym_Kleki.png" alt="Description of Image" style="margin-bottom: -20px;"> <h2 style="font-size: 24px; display: bottom;">Learn Spanish Online!</h2>
+    </header>
+    <nav>
+        <a href="Home.html">Home</a> <!-- Adjust the file paths accordingly -->
+        <a href="About.html">About</a>
+        <a href="Contact.html">Contact</a>
+        <a href="https://www.spanishconjugation.net/" target="_blank">Conjugate</a> <!-- Updated Google URL -->
+		<h2>Select a Destination:</h2>
+
+<select onchange="location = this.value;">
+    <option value="">Choose...</option>
+            <option value="Quizzes.html">Quizzes</option>
+            <option value="PDF.html">PDF</option>
+</select>
+<br>
+    </nav>
+    <main>
+<h2>Select an alternative webistes:</h2>
+
+<button onclick="redirectToPage('https://studyspanish.com/')">StudySpanish</button>
+
+<script>
+function redirectToPage(url) {
+    window.location.href = url;
+}
+</script>
+	</select>
+    </main>
+    <footer>
+        <p>&copy; 2024 Aprender. All rights reserved.</p>
+    </footer>
+</body>
+</html>

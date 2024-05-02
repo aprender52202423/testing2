@@ -1,0 +1,91 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+header, nav, main, footer {
+    width: 100%;
+    max-width: 1200px; /* Adjust as needed */
+    margin: 0 auto;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav {
+    background-color: #444;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 5px 0;
+    text-align: center;
+}
+
+/* Additional Styles */
+
+/* Dropdown Menu */
+nav select {
+    margin-top: 10px;
+    padding: 5px;
+}
+
+/* Collapsible Content */
+.collapsible {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.collapsible li {
+    background-color: #f0f0f0;
+    margin-bottom: 5px;
+}
+
+.collapsible li button {
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.collapsible-content {
+    display: none;
+    padding-left: 20px;
+}
+
+.active {
+    display: block;
+}
