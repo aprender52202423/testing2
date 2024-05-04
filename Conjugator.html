@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conjugador de Verbos en Español</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    input[type="text"], select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Conjugador de Verbos en Español</h1>
+    <form id="conjugateForm" action="">
+      <label for="inputVerb">Buscar un verbo:</label><br>
+      <input type="text" id="inputVerb" name="verb" placeholder="Ingrese un verbo en infinitivo" required><br>
+
+      <label for="tenseSelect">Seleccione un tiempo y modo:</label><br>
+      <select id="tenseSelect" name="tense" required>
+        <option value="" disabled selected>Seleccione un tiempo y modo</option>
+        <option value="Presente">Presente (de indicativo)</option>
+        <option value="Imperfecto">Imperfecto (de indicativo)</option>
+        <option value="Pretérito">Pretérito (pretérito perfecto simple)</option>
+        <option value="Futuro">Futuro</option>
+        <option value="Condicional">Condicional (potencial simple)</option>
+        <option value="Subjuntivo">Subjuntivo (Presente de subjuntivo)</option>
+        <option value="Imperativo">Imperativo (Command)</option>
+        <option value="Participio Pasado">Participio Pasado</option>
+        <option value="Gerundio">Gerundio (Present Participle)</option>
+      </select><br>
+
+      <input type="submit" value="Ver la tabla de conjugación">
+    </form>
+
+    <div id="conjugationChart"></div>
+  </div>
+
+  <script>
+    document.getElementById("conjugateForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      var verb = document.getElementById("inputVerb").value.trim().toLowerCase();
+      var tense = document.getElementById("tenseSelect").value;
+      var conjugationChart = document.getElementById("conjugationChart");
+
+      // Dummy data for demonstration purposes
+      var conjugationData = {
+        "amar": {
+          "Presente": {
+            "yo": "amo",
+            "tú": "amas",
+            "él/ella/usted": "ama",
+            "nosotros/as": "amamos",
+            "vosotros/as": "amáis",
+            "ellos/ellas/ustedes": "aman"
+          },
+          "Imperfecto": {
+			"yo": "amaba",
+			"tú": "amabas",
+			"él/ella/usted": "amaba",
+			"nosotros/as": "amábamos",
+			"vosotros/as": "amabais",
+			"ellos/ellas/ustedes": "amaban"
+          },
+		"Pretérito": {
+			"yo": "amé",
+			"tú": "amaste",
+			"él/ella/usted": "amó",
+			"nosotros/as": "amamos",
+			"vosotros/as": "amasteis",
+			"ellos/ellas/ustedes": "amaron"
+          },
+		"Futuro": {
+			"yo": "amaré",
+			"tú": "amarás",
+			"él/ella/usted": "amará",
+			"nosotros/as": "amaremos",
+			"vosotros/as": "amaréis",
+			"ellos/ellas/ustedes": "amarán"
+		  },
+		  "Condicional": {
+			"yo": "amaría",
+			"tú": "amarías",
+			"él/ella/usted": "amaría",
+			"nosotros/as": "amaríamos",
+			"vosotros/as": "amaríais",
+			"ellos/ellas/ustedes": "amarían"
+		  },
+		  "Subjuntivo": {
+			"yo": "ame",
+			"tú": "ames",
+			"él/ella/usted": "ame",
+			"nosotros/as": "amemos",
+			"vosotros/as": "améis",
+			"ellos/ellas/ustedes": "amen"
+		  },
+		  "Imperativo": {
+			"tú": "ama",
+			"usted": "ame",
+			"nosotros/as": "amemos",
+			"vosotros/as": "amad",
+			"ustedes": "amen"
+		  },
+		  "Participio Pasado": "amado",
+		  "Gerundio": "amando"
+        },
+        "beber": {
+          "Presente": {
+			"yo": "bebo",
+			"tú": "bebes",
+			"él/ella/usted": "bebe",
+			"nosotros/as": "bebemos",
+			"vosotros/as": "bebéis",
+			"ellos/ellas/ustedes": "beben"
+		  },
+		  "Imperfecto": {
+			"yo": "bebía",
+			"tú": "bebías",
+			"él/ella/usted": "bebía",
+			"nosotros/as": "bebíamos",
+			"vosotros/as": "bebíais",
+			"ellos/ellas/ustedes": "bebían"
+		  },
+		  "Pretérito": {
+			"yo": "bebí",
+			"tú": "bebiste",
+			"él/ella/usted": "bebió",
+			"nosotros/as": "bebimos",
+			"vosotros/as": "bebisteis",
+			"ellos/ellas/ustedes": "bebieron"
+		  },
+		  "Futuro": {
+			"yo": "beberé",
+			"tú": "beberás",
+			"él/ella/usted": "beberá",
+			"nosotros/as": "beberemos",
+			"vosotros/as": "beberéis",
+			"ellos/ellas/ustedes": "beberán"
+		  },
+		  "Condicional": {
+			"yo": "bebería",
+			"tú": "beberías",
+			"él/ella/usted": "bebería",
+			"nosotros/as": "beberíamos",
+			"vosotros/as": "beberíais",
+			"ellos/ellas/ustedes": "beberían"
+		  },
+		  "Subjuntivo": {
+			"yo": "beba",
+			"tú": "bebas",
+			"él/ella/usted": "beba",
+			"nosotros/as": "bebamos",
+			"vosotros/as": "bebáis",
+			"ellos/ellas/ustedes": "beban"
+		  },
+		  "Imperativo": {
+			"tú": "bebe",
+			"usted": "beba",
+			"nosotros/as": "bebamos",
+			"vosotros/as": "bebed",
+			"ustedes": "beban"
+		  },
+		  "Participio Pasado": "bebido",
+		  "Gerundio": "bebiendo"
+		},
+		"comer": {
+		  "Presente": {
+			"yo": "como",
+			"tú": "comes",
+			"él/ella/usted": "come",
+			"nosotros/as": "comemos",
+			"vosotros/as": "coméis",
+			"ellos/ellas/ustedes": "comen"
+		  },
+		  "Imperfecto": {
+			"yo": "comía",
+			"tú": "comías",
+			"él/ella/usted": "comía",
+			"nosotros/as": "comíamos",
+			"vosotros/as": "comíais",
+			"ellos/ellas/ustedes": "comían"
+		  },
+		  "Pretérito": {
+			"yo": "comí",
+			"tú": "comiste",
+			"él/ella/usted": "comió",
+			"nosotros/as": "comimos",
+			"vosotros/as": "comisteis",
+			"ellos/ellas/ustedes": "comieron"
+		  },
+		  "Futuro": {
+			"yo": "comeré",
+			"tú": "comerás",
+			"él/ella/usted": "comerá",
+			"nosotros/as": "comeremos",
+			"vosotros/as": "comeréis",
+			"ellos/ellas/ustedes": "comerán"
+		  },
+		  "Condicional": {
+			"yo": "comería",
+			"tú": "comerías",
+			"él/ella/usted": "comería",
+			"nosotros/as": "comeríamos",
+			"vosotros/as": "comeríais",
+			"ellos/ellas/ustedes": "comerían"
+		  },
+		  "Subjuntivo": {
+			"yo": "coma",
+			"tú": "comas",
+			"él/ella/usted": "coma",
+			"nosotros/as": "comamos",
+			"vosotros/as": "comáis",
+			"ellos/ellas/ustedes": "coman"
+		  },
+		  "Imperativo": {
+			"tú": "come",
+			"usted": "coma",
+			"nosotros/as": "comamos",
+			"vosotros/as": "comed",
+			"ustedes": "coman"
+		  },
+		  "Participio Pasado": "comido",
+		  "Gerundio": "comiendo"
+        },
+        // Other verbs and their conjugation data...
+      };
+
+      // Clear previous content
+      conjugationChart.innerHTML = "";
+
+      // Create and populate the conjugation table
+      var table = document.createElement("table");
+      var thead = document.createElement("thead");
+      var tbody = document.createElement("tbody");
+
+      // Header row
+      var headerRow = document.createElement("tr");
+      var pronounHeader = document.createElement("th");
+      pronounHeader.textContent = "Pronombre";
+      var conjugationHeader = document.createElement("th");
+      conjugationHeader.textContent = "Conjugación";
+      headerRow.appendChild(pronounHeader);
+      headerRow.appendChild(conjugationHeader);
+      thead.appendChild(headerRow);
+
+      // Body rows
+      Object.keys(conjugationData[verb][tense]).forEach(function(pronoun) {
+        var row = document.createElement("tr");
+        var pronounCell = document.createElement("td");
+        pronounCell.textContent = pronoun;
+        var conjugationCell = document.createElement("td");
+        conjugationCell.textContent = conjugationData[verb][tense][pronoun];
+        row.appendChild(pronounCell);
+        row.appendChild(conjugationCell);
+        tbody.appendChild(row);
+      });
+
+      table.appendChild(thead);
+      table.appendChild(tbody);
+      conjugationChart.appendChild(table);
+    });
+  </script>
+</body>
+</html>
